@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- META TAGS (Syllabus: semantic & meta tags) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NoteFlow — Smart Notes Manager. Capture, organize and manage your ideas.">
+  <meta name="keywords" content="notes, noteflow, productivity, ideas, study">
+  <meta name="author" content="NoteFlow">
+  <meta name="theme-color" content="#0a0a0f">
+  <title>NoteFlow — Smart Notes Manager</title>
+
+  <!-- EXTERNAL CSS (Syllabus: external referencing) -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- EXTERNAL JS (Syllabus: external js) -->
+  <script src="script.js" defer></script>
+</head>
+
+<body class="landing-page">
+
+  <!-- Animated background (Syllabus: background image animations) -->
+  <div class="bg-wrap">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="noise"></div>
+  </div>
+
+  <!-- HEADER / NAVBAR (Syllabus: semantic tags) -->
+  <header>
+    <nav class="navbar" id="mainNav">
+      <div class="nav-inner">
+
+        <div class="brand">
+          <div class="brand-icon">N</div>
+          <span class="brand-name">NoteFlow</span>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#hero" class="nav-link">Home</a>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#gallery" class="nav-link">Gallery</a>
+          <a href="#about" class="nav-link">About</a>
+          <!-- Inline JS (Syllabus: inline js) -->
+          <button class="btn-new" onclick="goToApp()">Open NoteFlow →</button>
+        </div>
+
+        <!-- Toggle button for mobile (Syllabus: toggle buttons) -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION (Syllabus: semantic tags) -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+
+      <div class="hero-badge">✨ Smart Note Taking</div>
+
+      <h1 class="hero-title">
+        Capture every<br>
+        <span class="gradient-text" id="typingText"></span>
+        <span class="cursor">|</span>
+      </h1>
+
+      <p class="hero-sub">
+        Organize, search, and manage your notes beautifully.<br>
+        Your ideas deserve a home this elegant.
+      </p>
+
+      <div class="hero-btns">
+        <button class="btn-primary-lg" onclick="goToApp()">
+          🚀 Start Writing
+        </button>
+        <button class="btn-outline-lg" onclick="scrollToFeatures()">
+          See Features ↓
+        </button>
+      </div>
+
+      <!-- Hero Stats -->
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">10K+</span>
+          <span class="stat-label">Notes Created</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">5</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">AI</span>
+          <span class="stat-label">Powered</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hero floating cards decoration - only visible on large screens -->
+    <div class="hero-cards-deco" aria-hidden="true">
+      <div class="deco-card deco1">
+        <div class="deco-tag">💼 Work</div>
+        <div class="deco-title">Project Deadline</div>
+        <div class="deco-line"></div>
+        <div class="deco-line short"></div>
+      </div>
+      <div class="deco-card deco2">
+        <div class="deco-tag">💡 Ideas</div>
+        <div class="deco-title">New App Concept</div>
+        <div class="deco-line"></div>
+        <div class="deco-line short"></div>
+      </div>
+      <div class="deco-card deco3">
+        <div class="deco-tag">📚 Study</div>
+        <div class="deco-title">Chapter Notes</div>
+        <div class="deco-line"></div>
+        <div class="deco-line short"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FEATURES SECTION (Syllabus: semantic tags) -->
+  <section class="features-section" id="features">
+    <div class="section-container">
+
+      <div class="section-heading">
+        <span class="section-eyebrow"><h1 style="font-size:42px; font-weight:800; color:rgb(112, 162, 255); line-height:1.2; text-align:center;"><b>Features</b></h1></span>
+        <h2 class="heading-bold">Everything you need to <span class="gradient-text">stay organized</span></h2>
+      </div>
+
+      <!-- Features Table (Syllabus: tables) -->
+      <div class="features-table-wrap">
+        <table class="features-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📝 Smart Notes</td>
+              <td>Create, edit and delete notes with rich content</td>
+              <td><span class="badge badge-green">Active</span></td>
+            </tr>
+            <tr>
+              <td>🔍 Search & Filter</td>
+              <td>Real-time search with category filters and sorting</td>
+              <td><span class="badge badge-green">Active</span></td>
+            </tr>
+            <tr>
+              <td>🤖 AI Assistant</td>
+              <td>Claude AI powered note suggestions and rewrites</td>
+              <td><span class="badge badge-blue">AI</span></td>
+            </tr>
+            <tr>
+              <td>🌐 Web APIs</td>
+              <td>Date/Time, Local Storage, Geolocation integration</td>
+              <td><span class="badge badge-green">Active</span></td>
+            </tr>
+            <tr>
+              <td>📱 Responsive</td>
+              <td>Works beautifully on mobile, tablet, and desktop</td>
+              <td><span class="badge badge-green">Active</span></td>
+            </tr>
+            <tr>
+              <td>🎨 Themes</td>
+              <td>Dark mode with animated gradient background</td>
+              <td><span class="badge badge-green">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Feature Cards Grid -->
+      <div class="features-grid">
+
+        <div class="feat-card" data-hover="true">
+          <div class="feat-icon">🔍</div>
+          <h3>Search & Sort</h3>
+          <p>Find any note instantly with real-time search. Sort by date, title, or category.</p>
+        </div>
+
+        <div class="feat-card" data-hover="true">
+          <div class="feat-icon">🤖</div>
+          <h3>AI Assistant</h3>
+          <p>Let AI help you expand, rewrite or summarize your notes with one click.</p>
+        </div>
+
+        <div class="feat-card" data-hover="true">
+          <div class="feat-icon">🏷️</div>
+          <h3>Categories</h3>
+          <p>Work, Study, Personal, Ideas — keep everything neatly organized.</p>
+        </div>
+
+        <div class="feat-card" data-hover="true">
+          <div class="feat-icon">⚡</div>
+          <h3>Fast & Offline</h3>
+          <p>All notes saved locally. No internet needed. Blazing fast performance.</p>
+        </div>
+
+        <div class="feat-card" data-hover="true">
+          <div class="feat-icon">📱</div>
+          <h3>Responsive</h3>
+          <p>Designed for every screen size — desktop, tablet and mobile.</p>
+        </div>
+
+        <div class="feat-card" data-hover="true">
+          <div class="feat-icon">🔒</div>
+          <h3>Private</h3>
+          <p>Your notes stay on your device. Complete privacy, always.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IMAGE GALLERY SECTION (Syllabus: image gallery) -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-container">
+
+      <div class="section-heading">
+        <span class="section-eyebrow"><h1 style="font-size:42px; font-weight:800; color:rgb(112, 162, 255); line-height:1.2; text-align:center;"><b>Gallery</b></h1></span>
+        <h2 class="heading-bold">A Glimpse of  <span class="gradient-text">Smart Productivity</span></h2>
+      </div>
+
+      <!-- Gallery Filter Buttons -->
+      <div class="gallery-filters">
+        <button class="gal-btn active" data-filter="all">All</button>
+        <button class="gal-btn" data-filter="ui">UI</button>
+        <button class="gal-btn" data-filter="features">Features</button>
+        <button class="gal-btn" data-filter="mobile">Mobile</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+
+        <div class="gallery-item" data-category="ui" onclick="openLightbox(this)">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&q=80" alt="Notes Dashboard" loading="lazy">
+            <div class="gal-overlay"><span>🔍 View</span></div>
+          </div>
+          <p class="gal-caption">Notes Dashboard</p>
+        </div>
+
+        <div class="gallery-item" data-category="features" onclick="openLightbox(this)">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="Search Feature" loading="lazy">
+            <div class="gal-overlay"><span>🔍 View</span></div>
+          </div>
+          <p class="gal-caption">Search & Filter</p>
+        </div>
+
+        <div class="gallery-item" data-category="features" onclick="openLightbox(this)">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" alt="AI Assistant" loading="lazy">
+            <div class="gal-overlay"><span>🔍 View</span></div>
+          </div>
+          <p class="gal-caption">AI Assistant</p>
+        </div>
+
+        <div class="gallery-item" data-category="mobile" onclick="openLightbox(this)">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="Mobile View" loading="lazy">
+            <div class="gal-overlay"><span>🔍 View</span></div>
+          </div>
+          <p class="gal-caption">Mobile Responsive</p>
+        </div>
+
+        <div class="gallery-item" data-category="ui" onclick="openLightbox(this)">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80" alt="Create Note" loading="lazy">
+            <div class="gal-overlay"><span>🔍 View</span></div>
+          </div>
+          <p class="gal-caption">Create Note</p>
+        </div>
+
+        <div class="gallery-item" data-category="ui" onclick="openLightbox(this)">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80" alt="Stats Overview" loading="lazy">
+            <div class="gal-overlay"><span>🔍 View</span></div>
+          </div>
+          <p class="gal-caption">Stats Overview</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX (Syllabus: interactive gallery) -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" id="lightboxContent"></div>
+    <button class="lightbox-close" onclick="closeLightbox()">✖</button>
+    <button class="lightbox-prev" onclick="lightboxNav(-1, event)">‹</button>
+    <button class="lightbox-next" onclick="lightboxNav(1, event)">›</button>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section" id="about">
+    <div class="section-container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-eyebrow"><h1 style="font-size:42px; font-weight:800; color:rgb(112, 162, 255); line-height:1.2; text-align:center;"><b>About</b></h1></span>
+          <h2 class="heading-bold">Built for <span class="gradient-text">thinkers</span></h2>
+          <p>NoteFlow is designed for students, professionals and creatives who need a fast, beautiful and smart way to capture ideas.</p>
+          <p>Built with pure HTML, CSS and JavaScript — no frameworks, no dependencies. Just clean, powerful web technology.</p>
+          <div class="about-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Web APIs</span>
+            <span class="tag">Claude AI</span>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-card-stack">
+            <div class="stack-card sc1">
+              <span>📝</span> Create note
+            </div>
+            <div class="stack-card sc2">
+              <span>🔍</span> Search & filter
+            </div>
+            <div class="stack-card sc3">
+              <span>🤖</span> AI enhance
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="section-container">
+      <div class="cta-box">
+        <h2 class="heading-bold">Ready to <span class="gradient-text">get started?</span></h2>
+        <p>Open the app and create your first note in seconds.</p>
+        <button class="btn-primary-lg" onclick="goToApp()">
+          Open NoteFlow →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (Syllabus: semantic tags) -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <div class="footer-logo">N</div>
+        <div>
+          <h3>NoteFlow</h3>
+          <p>Your smart notes workspace</p>
+        </div>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer Navigation">
+        <a href="#hero">Home</a>
+        <a href="#features">Features</a>
+        <a href="#gallery">Gallery</a>
+        <a href="app.html">App</a>
+      </nav>
+
+      <div class="footer-copy">
+        © 2026 NoteFlow. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP BUTTON (Syllabus: toggle button) -->
+  <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()" title="Scroll to top">↑</button>
+
+</body>
+</html>

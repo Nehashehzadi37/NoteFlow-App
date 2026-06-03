@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- META TAGS (Syllabus: meta & semantic tags) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NoteFlow App — Create and manage your notes">
+  <meta name="author" content="NoteFlow">
+  <title>NoteFlow — App</title>
+
+  <!-- EXTERNAL CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- EXTERNAL JS -->
+  <script src="script.js" defer></script>
+</head>
+
+<body class="app-page">
+
+  <!-- Animated background -->
+  <div class="bg-wrap">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="noise"></div>
+  </div>
+
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <nav class="navbar" id="mainNav">
+      <div class="nav-inner">
+
+        <div class="brand">
+          <div class="brand-icon">N</div>
+          <!-- Inline JS -->
+          <span class="brand-name" onclick="window.location.href='index.html'" style="cursor:pointer">NoteFlow</span>
+        </div>
+
+        <div class="nav-center">
+          <!-- SEARCH (Syllabus: searching/filtering) -->
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search your notes..." oninput="searchNotes()">
+          </div>
+        </div>
+
+        <div class="nav-right">
+          <!-- FILTER DROPDOWN (Syllabus: filtering) -->
+          <select id="filterCategory" onchange="filterNotes()" class="nav-filter">
+            <option value="All">All Notes</option>
+            <option value="Work">💼 Work</option>
+            <option value="Personal">🙂 Personal</option>
+            <option value="Study">📚 Study</option>
+            <option value="Ideas">💡 Ideas</option>
+            <option value="General">📁 General</option>
+          </select>
+
+          <!-- SORT DROPDOWN (Syllabus: sorting) -->
+          <select id="sortOrder" onchange="sortNotes()" class="nav-filter">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+          </select>
+
+          <!-- Toggle View Button (Syllabus: toggle buttons) -->
+          <button class="view-toggle" id="viewToggleBtn" onclick="toggleView()" title="Toggle view">⊞</button>
+
+          <button class="btn-new" onclick="openCreateModal()">+ New Note</button>
+        </div>
+
+        <button class="hamburger" id="hamburgerBtn">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO STATS BAR -->
+  <section class="app-hero">
+    <div class="app-hero-inner">
+      <div class="app-hero-text">
+        <h1>My <span class="gradient-text">Notes</span></h1>
+        <p>Your ideas, organized beautifully.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" id="totalNotes">0</span>
+          <span class="stat-label">Total Notes</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="totalCats">0</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat" id="weatherStat" title="Live weather via Web API">
+          <span class="stat-num" id="weatherIcon">🌡️</span>
+          <span class="stat-label" id="weatherLabel">Weather</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="clockDisplay">--:--</span>
+          <span class="stat-label">Time</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY BAR (Syllabus: filtering) -->
+  <div class="cat-bar">
+    <div class="cat-inner">
+      <button class="cat-pill active" onclick="setFilter('All', this)">All</button>
+      <button class="cat-pill" onclick="setFilter('Work', this)">💼 Work</button>
+      <button class="cat-pill" onclick="setFilter('Personal', this)">🙂 Personal</button>
+      <button class="cat-pill" onclick="setFilter('Study', this)">📚 Study</button>
+      <button class="cat-pill" onclick="setFilter('Ideas', this)">💡 Ideas</button>
+      <button class="cat-pill" onclick="setFilter('General', this)">📁 General</button>
+    </div>
+  </div>
+
+  <!-- MAIN (Syllabus: semantic tags) -->
+  <main class="main-content">
+
+    <div class="section-block">
+      <div class="section-label">
+        Notes
+        <span class="section-count" id="noteCount">0</span>
+        <span class="section-sort-info" id="sortInfo"></span>
+      </div>
+
+      <!-- NOTES GRID -->
+      <div id="notesList" class="notes-grid"></div>
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="empty-state" style="display:none">
+      <div class="empty-icon">🗒️</div>
+      <h3>No notes found</h3>
+      <p>Create your first note or try a different search</p>
+      <button class="btn-new" onclick="openCreateModal()">Create Note</button>
+    </div>
+
+  </main>
+
+  <!-- CREATE / EDIT MODAL (Syllabus: forms + input validation) -->
+  <div id="noteModal" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-box">
+
+      <div class="modal-header">
+        <h3 id="modalTitle">New Note</h3>
+        <button class="modal-close" onclick="closeModal()" title="Close">✖</button>
+      </div>
+
+      <!-- FORM (Syllabus: forms) -->
+      <form class="modal-body" id="noteForm" onsubmit="return false;">
+
+        <div class="field-group">
+          <label for="noteTitle">Title <span class="req">*</span></label>
+          <input type="text" id="noteTitle" placeholder="Enter title..." maxlength="80" required>
+          <span class="char-count" id="titleCharCount">0 / 80</span>
+          <span class="field-error" id="titleError"></span>
+        </div>
+
+        <div class="field-group">
+          <label for="noteCategory">Category</label>
+          <select id="noteCategory">
+            <option value="General">📁 General</option>
+            <option value="Work">💼 Work</option>
+            <option value="Personal">🙂 Personal</option>
+            <option value="Study">📚 Study</option>
+            <option value="Ideas">💡 Ideas</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="notePriority">Priority</label>
+          <select id="notePriority">
+            <option value="normal">Normal</option>
+            <option value="high">🔴 High</option>
+            <option value="medium">🟡 Medium</option>
+            <option value="low">🟢 Low</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="noteContent">Content <span class="req">*</span></label>
+          <textarea id="noteContent" rows="5" placeholder="Write your note..." required></textarea>
+          <span class="field-error" id="contentError"></span>
+        </div>
+
+        <!-- AI Enhance Button (Syllabus: Web API - AI) -->
+        <div class="ai-bar">
+          <button type="button" class="btn-ai" id="aiBtn"  onclick="defineWord()">📖 Define Word</button>
+          </button>
+          <span class="ai-hint">Let AI improve your note</span>
+        </div>
+
+        <!-- AI Response Box -->
+        <div class="ai-response-box" id="aiResponseBox" style="display:none;">
+          <div class="ai-response-header">
+            <span>🤖 AI Suggestion</span>
+            <div class="ai-response-actions">
+              <button type="button" class="btn-ai-accept" onclick="acceptAiSuggestion()">✅ Use This</button>
+              <button type="button" class="btn-ai-reject" onclick="rejectAiSuggestion()">✖ Discard</button>
+            </div>
+          </div>
+          <div class="ai-response-text" id="aiResponseText"></div>
+        </div>
+
+      </form>
+
+      <div class="modal-footer">
+        <button class="btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveNote()">💾 Save Note</button>
+        
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VIEW NOTE MODAL -->
+  <div id="viewModal" class="modal-overlay" onclick="closeViewModalOutside(event)">
+    <div class="modal-box modal-box-view">
+      <div class="modal-header">
+        <h3 id="viewModalTitle">Note</h3>
+        <button class="modal-close" onclick="closeViewModal()">✖</button>
+      </div>
+      <div class="modal-body" id="viewModalBody"></div>
+      <div class="modal-footer">
+        <button class="btn-ghost" onclick="closeViewModal()">Close</button>
+        <button class="btn-primary" id="editFromViewBtn" onclick="editFromView()">✏️ Edit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <!-- SCROLL TOP -->
+  <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()" title="Back to top">↑</button>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">N</div>
+        <div>
+          <h3>NoteFlow</h3>
+          <p>Your smart notes workspace</p>
+        </div>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#" onclick="openCreateModal()">New Note</a>
+        <a href="#" onclick="exportNotes()">Export</a>
+      </nav>
+      <div class="footer-copy">© 2026 NoteFlow. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
