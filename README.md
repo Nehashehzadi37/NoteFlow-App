@@ -1,17 +1,16 @@
 # 📝 NoteFlow App
 
-NoteFlow is a simple and clean web-based Notes application that allows users to create, manage, and organize their daily notes easily in the browser.
+NoteFlow is a simple web-based Notes application that allows users to create, view, edit, and manage notes easily in the browser.
 
 ---
 
 ## 🚀 Features
 
-- 🏠 Home page to view all notes  
-- ✍️ Add new notes  
-- ✏️ Edit existing notes  
-- 🗑️ Delete notes  
-- 📂 Simple and clean user interface  
-- 📱 Responsive design for mobile and desktop  
+- 🏠 Home page  
+- ⭐ Features section  
+- 📝 Notes management  
+- ✏️ Edit notes functionality  
+- 🗑️ Delete notes support  
 
 ---
 
@@ -25,22 +24,22 @@ NoteFlow is a simple and clean web-based Notes application that allows users to 
 
 ## 📸 Screenshots
 
-### 🏠 Home Page
-![Home Page](screenshots/home.png)
+### 🏠 Home
+![Home](Home.png)
 
-### ➕ Add Note
-![Add Note](screenshots/add-note.png)
+### ⭐ Features
+![Features](Features.png)
 
-### ✏️ Edit Note
-![Edit Note](screenshots/edit-note.png)
+### 📝 Notes
+![Notes](Notes.png)
 
-### 🗑️ Delete Note
-![Delete Note](screenshots/delete-note.png)
+### ✏️ Edit Notes
+![Edit Notes](Edit notes.png)
 
 ---
 
 ## ▶️ How to Run This Project
 
-1. Clone the repository:
+1. Clone repository:
 ```bash
 git clone https://github.com/Nehashehzadi37/NoteFlow-App
