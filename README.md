@@ -34,7 +34,7 @@ NoteFlow is a simple web-based Notes application that allows users to create, vi
 ![Notes](Notes.png)
 
 ### ✏️ Edit Notes
-![Edit Notes](Edit notes.png)
+![Edit Notes](Editnotes.png)
 
 ---
 
